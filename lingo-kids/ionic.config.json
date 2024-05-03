@@ -1,0 +1,7 @@
+{
+  "name": "lingo-kids",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

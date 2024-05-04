@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form class="form" (submit)="login($event)" [formGroup]="loginForm">
+    <div class="container-top">
+      <h1 class="title">Ingresa a tu cuenta</h1>
+
+      <div class="form-field">
+        <label class="label">Correo Electronico</label>
+        <input type="text" class="input" placeholder="Correo Electronico" />
+        @if (emailControl.invalid && (emailControl.touched ||
+        emailControl.dirty)) { @if (emailControl.hasError('required')) {
+        <p class="error-message">El correo electronico no puede estar vacio</p>
+        } @if (emailControl.hasError('email')) {
+        <p class="error-message">Ingrese un correo electronico valido</p>
+        } }
+      </div>
+      <div class="form-field">
+        <label class="label">Contraseña</label>
+        <input type="text" class="input" placeholder="Contraseña" />
+        @if (emailControl.invalid && emailControl.touched) { @if
+        (emailControl.hasError('required')) {
+        <p class="error-message">La contraseña no puede estar vacia</p>
+        } }
+      </div>
+    </div>
+
+    <button type="submit" class="button">Ingresar</button>
+  </form>
+</ion-content>

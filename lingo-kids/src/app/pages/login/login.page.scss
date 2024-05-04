@@ -1,0 +1,72 @@
+.ion-padding {
+  padding: 32px;
+}
+
+.form {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-field:first-child {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  color: #121212;
+  margin-bottom: 40px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #121212;
+  }
+
+  .input {
+    display: block;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    background-color: #f5f5f5;
+    font-size: 14px;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 8px;
+
+    &:focus {
+      outline: 2px solid #e7810a;
+    }
+  }
+
+  .error-message {
+    text-align: end;
+    font-size: 14px;
+    color: #e70a0a;
+  }
+}
+
+.ng-touched.ng-invalid:is(input),
+.ng-dirty.ng-invalid:is(input) {
+  outline: 2px solid #e70a0a;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  background-color: #e7810a;
+  color: white;
+  height: 48px;
+  font-weight: 700;
+  border-radius: 8px;
+}

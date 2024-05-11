@@ -1,0 +1,7 @@
+{
+  "name": "photo-slap",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

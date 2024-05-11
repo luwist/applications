@@ -1,0 +1,7 @@
+{
+  "name": "credit-wallet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,20 @@
+ion-tab-bar {
+  height: 80px;
+  border: 0;
+  background-color: #111;
+}
+
+ion-tab-button {
+  color: white;
+
+  --color-selected: hsl(198, 63%, 38%);
+  --color-focused: hsl(198, 63%, 38%);
+}
+
+ion-icon {
+  margin-bottom: 6px;
+  stroke: white;
+
+  --color-selected: hsl(198, 63%, 38%);
+  --color-focused: hsl(198, 63%, 38%);
+}

@@ -3,12 +3,13 @@
   --padding-end: 32px;
 }
 
-.button-camera {
-  background-color: #111;
-  border: 0;
-  width: 100%;
+ion-button {
+  --background: #111;
+  --border-radius: 50px;
+
+  display: block;
   height: 330px;
-  border-radius: 50px;
+  margin-bottom: 24px;
 }
 
 .text {

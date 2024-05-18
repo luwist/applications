@@ -12,6 +12,9 @@ import {
   IonButtons,
   IonIcon,
   IonButton,
+  IonLabel,
+  IonItem,
+  IonList,
 } from '@ionic/angular/standalone';
 import { PhotoCardComponent } from 'src/app/components/photo-card/photo-card.component';
 
@@ -21,6 +24,9 @@ import { PhotoCardComponent } from 'src/app/components/photo-card/photo-card.com
   styleUrls: ['./explore.page.scss'],
   standalone: true,
   imports: [
+    IonList,
+    IonItem,
+    IonLabel,
     IonButton,
     IonIcon,
     IonMenu,
@@ -38,4 +44,8 @@ import { PhotoCardComponent } from 'src/app/components/photo-card/photo-card.com
 })
 export class ExplorePage {
   constructor() {}
+
+  logout(): void {
+    console.log('Cerrar Sesion');
+  }
 }

@@ -15,6 +15,9 @@ import {
   IonLabel,
   IonItem,
   IonList,
+  IonAvatar,
+  IonImg,
+  IonModal,
 } from '@ionic/angular/standalone';
 import { PhotoCardComponent } from 'src/app/components/photo-card/photo-card.component';
 
@@ -24,6 +27,9 @@ import { PhotoCardComponent } from 'src/app/components/photo-card/photo-card.com
   styleUrls: ['./explore.page.scss'],
   standalone: true,
   imports: [
+    IonModal,
+    IonImg,
+    IonAvatar,
     IonList,
     IonItem,
     IonLabel,
@@ -47,5 +53,10 @@ export class ExplorePage {
 
   logout(): void {
     console.log('Cerrar Sesion');
+  }
+
+  openModal(image: string): void {
+    console.log('Modal');
+    console.log('Image: ', image);
   }
 }

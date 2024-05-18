@@ -1,74 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
-
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="#fff"
-      >
-        <path
-          d="M2.333 2.334v19.833c0 1.936 1.564 3.5 3.5 3.5h19.834"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="m5.833 19.833 5.355-6.253c.887-1.027 2.462-1.097 3.419-.129l1.108 1.109a2.34 2.34 0 0 0 3.418-.129L24.5 8.168"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+    <ion-tab-button tab="statistics">
+      <ion-icon src="assets/icon/diagram.svg" class="custom-icon"></ion-icon>
 
       Estadisticas
     </ion-tab-button>
-    <ion-tab-button tab="radio">
-      <ion-icon src="assets/icon/photography.svg"></ion-icon>
-      <!-- <ion-icon name="radio"></ion-icon> -->
+    <ion-tab-button tab="photography">
+      <ion-icon src="assets/icon/camera.svg" class="custom-icon"></ion-icon>
 
       Fotografiar
     </ion-tab-button>
-    <ion-tab-button tab="library">
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="#fff"
-      >
-        <path
-          d="M20.767 2.45 9.182 5.355c-1.692.42-3.407 2.135-3.827 3.827L2.45 20.767c-.875 3.5 1.272 5.658 4.783 4.783l11.585-2.893c1.68-.42 3.407-2.147 3.827-3.827L25.55 7.233c.875-3.5-1.283-5.658-4.783-4.783"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M14 18.083a4.083 4.083 0 1 0 0-8.167 4.083 4.083 0 0 0 0 8.167"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+    <ion-tab-button tab="explore">
+      <ion-icon src="assets/icon/discover.svg" class="custom-icon"></ion-icon>
 
       Explorar
     </ion-tab-button>

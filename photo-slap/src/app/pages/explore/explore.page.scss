@@ -1,0 +1,13 @@
+ion-menu::part(backdrop) {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ion-padding {
+  --padding-start: 32px;
+  --padding-end: 32px;
+}
+
+.gallery {
+  columns: 2;
+  column-gap: 24px;
+}

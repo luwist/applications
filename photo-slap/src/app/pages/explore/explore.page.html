@@ -1,101 +1,24 @@
-<ion-menu contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <div class="user">
-        <img
-          src="https://avatars.githubusercontent.com/u/78757719?v=4"
-          alt=""
-          class="avatar"
-        />
-        <div class="content">
-          <span class="username">Luwist</span>
-          <span class="email">luwist&#64;test.com</span>
-        </div>
-      </div>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item button>
-        <ion-icon src="assets/icon/notification.svg"></ion-icon>
-        <ion-label>Notificaciones</ion-label>
-      </ion-item>
-      <ion-item button>
-        <ion-icon src="assets/icon/setting.svg"></ion-icon>
-        <ion-label>Configuraciones</ion-label>
-      </ion-item>
-      <ion-item button class="logout" (click)="logout()">
-        <ion-icon src="assets/icon/logout.svg"></ion-icon>
-        <ion-label>Cerrar Sesion</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Explorar</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-toggle>
-          <ion-button>
-            <ion-icon slot="icon-only" src="assets/icon/menu.svg"></ion-icon>
-          </ion-button>
-        </ion-menu-toggle>
-      </ion-buttons>
-
-      <ion-title>Explorar</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content [fullscreen]="true" class="ion-padding">
-    <div class="gallery">
+<ion-content class="ion-padding">
+  <div class="gallery">
+    @for (user of users; track $index) {
       <app-photo-card
-        image="https://s1.elespanol.com/2023/11/05/curiosidades/807429471_237352515_1706x1280.jpg"
-        username="StrogeBest"
+        [image]="user.image"
+        [username]="user.username"
         (imageClick)="openModal($event)"
       />
+    }
+  </div>
 
-      <app-photo-card
-        image="https://content.elmueble.com/medio/2023/10/26/sigue-estos-trucos-para-alargar-la-vida-de-tus-plantas-en-macetas_b6d2aa07_231026103457_900x900.jpg"
-        username="Luwist"
-        (imageClick)="openModal($event)"
-      />
+  <ion-modal id="photo-modal" #photoModal trigger="open-photo-modal">
+    <ng-template>
+        <app-photo-detail [image]="currentImage" />
+    </ng-template>
+  </ion-modal>
 
-      <app-photo-card
-        image="https://mueblesgold.com.ar/wp-content/uploads/2022/09/IMG_1900-scaled-1.jpg"
-        username="Kwess"
-        (imageClick)="openModal($event)"
-      />
-
-      <app-photo-card
-        image="https://disegnimobili.com.ar/wp-content/uploads/2022/10/2F0A0347-FF14-4E16-B409-EA43B4AE2315_1_105_c.jpeg"
-        username="Uwessy"
-        (imageClick)="openModal($event)"
-      />
-
-      <app-photo-card
-        image="https://muett.com/wp-content/uploads/2023/08/Mgto_Juan-Ignacio-Ruffa_fit-1x1-1.jpg"
-        username="ChesseTo"
-        (imageClick)="openModal($event)"
-      />
-
-      <app-photo-card
-        image="https://www.rodo.com.ar/media/catalog/product/cache/855090a5c67e45b26c9e0d345e7592dc/3/5/353856_horno_black_decker_5.jpg"
-        username="Luwist"
-        (imageClick)="openModal($event)"
-      />
-
-      <app-photo-card
-        image="https://dcdn.mitiendanube.com/stores/794/107/products/pic_20200703_025053-8784c3bbf58414b83c15937556472734-1024-1024.jpg"
-        username="Kwess"
-        (imageClick)="openModal($event)"
-      />
-
-      <app-photo-card
-        image="https://dcdn.mitiendanube.com/stores/725/780/products/cocina1-18953a9ca82ef716be16431651731040-640-0.jpg"
-        username="StrogeBest"
-        (imageClick)="openModal($event)"
-      />
-    </div>
-  </ion-content>
-</div>
+</ion-content>

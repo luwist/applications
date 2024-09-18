@@ -1,21 +1,22 @@
 ion-tab-bar {
   height: 80px;
   border: 0;
-  --background: #111;
+  --background: hsl(0, 0%, 7%);
 
   ion-tab-button {
-    color: white;
+    --font-size: 12px;
+    color: hsl(0, 0%, 100%);
 
-    --color: hsl(198, 63%, 38%);
-    --color-selected: hsl(198, 63%, 38%);
+    --color: hsl(215, 75%, 50%);
+    --color-selected: hsl(215, 75%, 50%);
 
     ion-icon {
       margin-bottom: 6px;
-      stroke: white;
+      stroke: hsl(0, 0%, 100%);
     }
 
     &:hover .custom-icon {
-      stroke: hsl(198, 63%, 38%);
+      stroke: hsl(215, 75%, 50%);
     }
   }
 }

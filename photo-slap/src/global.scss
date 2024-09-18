@@ -44,65 +44,6 @@ body {
   --ion-background-color: black;
 }
 
-ion-menu {
-  ion-toolbar {
-    --padding-top: 20px;
-
-    .user {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-
-      .avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50px;
-      }
-
-      .content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2px;
-
-        .username {
-          color: white;
-          font-size: 16px;
-          font-weight: 500;
-        }
-
-        .email {
-          font-size: 14px;
-          color: #898989;
-        }
-      }
-    }
-  }
-
-  ion-content {
-    --padding-start: 24px;
-    --padding-end: 24px;
-
-    ion-item {
-      --color-hover: white;
-      --border-radius: 8px;
-      --min-height: 54px;
-      font-size: 14px;
-      color: white;
-
-      ion-icon {
-        margin-right: 14px;
-      }
-
-      &.logout {
-        --color-hover: hsl(2, 72%, 59%);
-        color: hsl(2, 72%, 59%);
-      }
-    }
-  }
-}
-
 ion-toolbar {
   --background-color: black;
   --min-height: 84px;
@@ -122,4 +63,32 @@ ion-toolbar {
     display: grid;
     place-content: center;
   }
+}
+
+ion-modal#photo-modal {
+  --background: transparent;
+  --width: fit-content;
+  --min-width: calc(100% - 64px);
+  --height: fit-content;
+  --border-radius: 12px;
+
+  // .wrapper {
+  //   margin: 0 32px;
+
+  //   img {
+  //     width: 100%;
+  //     height: 100%;
+  //     object-fit: cover;
+  //   }
+  // }
+}
+
+ion-modal>.ion-page {
+  margin: 0 32px;
+}
+
+
+ion-modal::part(backdrop) {
+  background: rgb(0, 0, 0);
+  opacity: .5;
 }

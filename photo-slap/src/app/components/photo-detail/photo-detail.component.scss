@@ -1,0 +1,60 @@
+.hasNotLike {
+  fill: hsl(0, 75%, 50%);
+}
+
+.hasLike {
+  fill: hsl(215, 75%, 50%);
+}
+
+.default {
+  fill: #1f1f1f;
+}
+
+.wrapper {
+    img {
+      background-color: #353535;
+      display: block;
+      max-width: 100%;
+      border-radius: 12px;
+    }
+  
+    &:before {
+      border-radius: 5px;
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  
+    .body {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 14px;
+  
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+  
+      .buttons-content {
+        display: flex;
+        gap: 8px;
+  
+        .button-photo-modal {
+          background-color: white;
+          padding: 10px;
+          border-radius: 50px;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: #1f1f1f;
+          font-size: 12px;
+          font-weight: 600;
+        }
+      }
+    }
+  }

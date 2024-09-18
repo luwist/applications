@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Iniciar sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="wrapper">
+    <div>
+      <div class="accounts">
+        @for (account of accounts; track $index) {
+          <app-account-card [role]="account.role" />
+        }
+      </div>
+
+      <app-divider label="o inicia sesión con tu correo electrónico" />
+    
+      <div class="form-field">
+        <label class="label">
+          Correo electrónico
+    
+          <ion-input
+              fill="outline"
+              class="input"
+              placeholder="Correo electrónico"
+          />
+        </label>
+      </div>
+    
+      <div class="form-field">
+        <label class="label">
+          Contraseña
+    
+          <ion-input
+              fill="outline"
+              type="password"
+              class="input"
+              placeholder="Contraseña"
+          />
+        </label>
+      </div>
+    </div>
+
+    <ion-button expand="block">Iniciar sesión</ion-button>
+  </div>
+
+</ion-content>

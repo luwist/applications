@@ -4,18 +4,18 @@
 }
 
 ion-button {
-  --background: #111;
-  --border-radius: 50px;
-
   display: block;
   height: 330px;
   margin-bottom: 24px;
+
+  --background: var(--ion-card-color);
+  --border-radius: 50px;
 }
 
 .text {
   font-size: 14px;
   font-weight: 500;
   text-align: center;
-  color: #898989;
+  color: var(--ion-muted-foreground);
   margin-bottom: 16px;
 }

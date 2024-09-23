@@ -1,0 +1,50 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        font-weight: 500;
+
+        .name {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .email {
+            margin: 0;
+            font-size: 14px;
+            color: var(--ion-muted-foreground);
+        }
+    }
+}
+
+ion-item {
+    font-size: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    --color-hover: white;
+    --border-radius: 8px;
+    --min-height: 44px;
+
+    &.logout {
+        color: var(--ion-color-danger);
+
+      --color-hover: var(--ion-color-danger);
+    }
+  }

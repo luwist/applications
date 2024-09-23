@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './pages/home/home.page';
+import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo('/login');
 
 export const routes: Routes = [
   {
@@ -31,6 +34,10 @@ export const routes: Routes = [
           import('./pages/profile/profile.page').then((m) => m.ProfilePage),
       },
     ],
+    canActivate: [AuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin,
+    },
   },
   {
     path: 'login',

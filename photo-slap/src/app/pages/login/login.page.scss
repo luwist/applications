@@ -10,3 +10,18 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+ion-input.input {
+    font-size: 14px;
+    font-weight: 400;
+  
+    --border-radius: 8px;
+    --border-width: 0;
+    --background: var(--ion-input-color);
+    --highlight-height: 1px;
+  
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --highlight-color-invalid: var(--ion-color-danger);
+    --highlight-color-valid: var(--ion-color-primary);
+  }

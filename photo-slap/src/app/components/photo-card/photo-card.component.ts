@@ -8,7 +8,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PhotoCardComponent {
   @Input() image!: string;
-  @Input() username!: string;
+  @Input() firstName!: string;
+  @Input() lastName!: string;
   @Output() imageClick: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {}

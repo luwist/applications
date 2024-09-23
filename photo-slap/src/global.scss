@@ -37,13 +37,21 @@
 /* @import "@ionic/angular/css/palettes/dark.system.css"; */
 
 :root {
-  --ion-background-color: #000000;
+  --ion-background-color: #131313;
   --ion-font-family: "Poppins", sans-serif;
   --ion-text-color: #ffffff;
-  --ion-color-primary: #2070DF;
+  --ion-color-primary: #2D74FF;
+  --ion-color-danger: #FF2D2D;
 
-  --ion-input-color: #111111;
-  --ion-card-color: #111111;
+  --ion-input-color: #1E1F21;
+  --ion-card-color: #1E1F21;
+  --ion-muted-foreground: #808080;
+}
+
+ion-skeleton-text {
+  --border-radius: 9999px;
+  --background: rgb(128, 128, 128, 0.065);
+  --background-rgb: 128, 128, 128;
 }
 
 .form-field {
@@ -58,25 +66,13 @@
   font-weight: 500;
 }
 
-ion-input.input {
-  --border-radius: 8px;
-  --border-width: 0;
-  --background: var(--ion-input-color);
-  --highlight-height: 1px;
-
-  --padding-start: 20px;
-  --padding-end: 20px;
-
-  font-size: 14px;
-  font-weight: 400;
-}
-
 ion-button {
   --border-radius: 8px;
+  --box-shadow: none;
 
   min-height: 56px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: none;
 }
 

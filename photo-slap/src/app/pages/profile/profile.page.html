@@ -1,13 +1,37 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>Mi Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="wrapper">
+    <div class="profile">
+      @if (currentUser$ | async; as currentUser) {
+        <img [src]="currentUser.photoURL" alt="" class="avatar">
+
+        <div class="content">
+          <p class="name">{{ currentUser.displayName }}</p>
+          <p class="email">{{ currentUser.email }}</p>
+        </div>
+      } @else {
+        <ion-skeleton-text [animated]="true" style="width: 64px; height: 64px;"></ion-skeleton-text>
+
+        <div class="content">
+          <ion-skeleton-text [animated]="true" style="width: 120px; height: 18px;"></ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 150px; height: 18px;"></ion-skeleton-text>
+        </div>
+      }
+    </div>
+
+    <ion-list lines="none">
+      <ion-item button (click)="logout()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#FF2D2D">
+          <path d="M17.44 14.62 20 12.06 17.44 9.5m-7.68 2.56h10.17M11.76 20c-4.42 0-8-3-8-8s3.58-8 8-8" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <ion-label color="danger">Cerrar sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

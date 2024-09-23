@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -21,6 +21,10 @@ import {
 } from '@ionic/angular/standalone';
 import { PhotoCardComponent } from 'src/app/components/photo-card/photo-card.component';
 import { PhotoDetailComponent } from 'src/app/components/photo-detail/photo-detail.component';
+import { PhotoRepository } from 'src/app/repositories';
+import { Photo } from 'src/app/models';
+import { Firestore, onSnapshot } from '@angular/fire/firestore';
+import { collection } from '@firebase/firestore';
 
 @Component({
   selector: 'app-explore',
@@ -50,11 +54,43 @@ import { PhotoDetailComponent } from 'src/app/components/photo-detail/photo-deta
     FormsModule,
   ],
 })
-export class ExplorePage {
+export class ExplorePage implements OnInit {
   @ViewChild(IonModal) photoModal!: IonModal;
 
-  users: any = [
-    {
+  photos: Photo[] = [];
+
+  currentImage!: string;
+
+  constructor(
+    private _photoRepository: PhotoRepository,
+    private _firestore: Firestore
+  ) {}
+
+  ngOnInit(): void {
+    const collRef = collection(this._firestore, 'photos');
+
+    onSnapshot(collRef, (snapshot) => {
+      const list: any = [];
+
+      snapshot.docs.forEach((data) => {
+        const photo = data.data() as Photo;
+
+        list.push(photo);
+      });
+
+      this.photos = list;
+    });
+  }
+
+  openModal(image: string): void {
+    this.currentImage = image;
+
+    this.photoModal.present();
+  }
+}
+
+/*
+{
       id: 1,
       username: 'Juan Perez',
       image:
@@ -102,14 +138,4 @@ export class ExplorePage {
       image:
         'https://firebasestorage.googleapis.com/v0/b/pixel-labs-38e6c.appspot.com/o/image-11.jpeg?alt=media&token=53cc1c3c-0c5e-4a7e-a6bd-a702606a688a',
     },
-  ];
-
-  currentImage!: string;
-
-  constructor() {}
-
-  openModal(image: string): void {
-    this.currentImage = image;
-    this.photoModal.present();
-  }
-}
+*/

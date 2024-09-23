@@ -1,19 +1,30 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>Explorar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="gallery">
-    @for (user of users; track $index) {
-      <app-photo-card
-        [image]="user.image"
-        [username]="user.username"
-        (imageClick)="openModal($event)"
-      />
-    }
-  </div>
+  @if (photos.length > 0) {
+    <div class="gallery">
+      @for (photo of photos; track $index) {
+        <app-photo-card
+          [image]="photo.image"
+          [firstName]="photo.firstName"
+          [lastName]="photo.lastName"
+          (imageClick)="openModal($event)"
+        />
+      }
+    </div>
+  } @else {
+    <div class="content-empty">
+      <div class="body">
+        <img src="assets/images/photo-empty.png" alt="">
+  
+        <span>No hay fotos para mostrar</span>
+      </div>
+    </div>
+  }
 
   <ion-modal id="photo-modal" #photoModal trigger="open-photo-modal">
     <ng-template>

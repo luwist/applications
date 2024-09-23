@@ -16,6 +16,10 @@ import {
   IonButton,
 } from '@ionic/angular/standalone';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import { AuthService, UploadService } from 'src/app/services';
+import { PhotoRepository } from 'src/app/repositories';
+import { User } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-photography',
@@ -40,21 +44,34 @@ import { Camera, CameraResultType } from '@capacitor/camera';
   ],
 })
 export class PhotographyPage {
-  constructor() {}
+  currentUser$!: Observable<User | null>;
 
-  async takePicture(): Promise<void> {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: true,
-      resultType: CameraResultType.Uri,
-    });
-
-    var imageUrl = image.webPath;
-
-    // imageElement.src = imageUrl;
+  constructor(
+    private _authService: AuthService,
+    private _uploadService: UploadService,
+    private _photoRepository: PhotoRepository
+  ) {
+    this.currentUser$ = this._authService.currentUser$;
   }
 
-  logout(): void {
-    console.log('Cerrar Sesion');
+  async takePicture(): Promise<void> {
+    const photo = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+    });
+
+    const photoUrl = await this._uploadService.uploadPhoto(photo);
+
+    this.currentUser$.subscribe((user) => {
+      const firstName = user?.displayName?.split(' ')[0] as string;
+      const lastName = user?.displayName?.split(' ')[1] as string;
+
+      this._photoRepository.add({
+        image: photoUrl,
+        firstName: firstName,
+        lastName: lastName,
+      });
+    });
   }
 }

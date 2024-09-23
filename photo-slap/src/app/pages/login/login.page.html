@@ -1,15 +1,15 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>Iniciar sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="wrapper">
+  <form class="wrapper" [formGroup]="form">
     <div>
       <div class="accounts">
         @for (account of accounts; track $index) {
-          <app-account-card [role]="account.role" />
+          <app-account-card [role]="account.role" [selected]="selectedAccount === account.id" (click)="onSelectedAccount(account)" />
         }
       </div>
 
@@ -23,6 +23,7 @@
               fill="outline"
               class="input"
               placeholder="Correo electrónico"
+              formControlName="email"
           />
         </label>
       </div>
@@ -36,12 +37,18 @@
               type="password"
               class="input"
               placeholder="Contraseña"
+              formControlName="password"
           />
         </label>
       </div>
     </div>
 
-    <ion-button expand="block">Iniciar sesión</ion-button>
-  </div>
+    <ion-button
+      type="submit"
+      expand="block"
+      [disabled]="(form.statusChanges | async) !== 'VALID'"
+      (click)="onLogin()"
+    >Iniciar sesión</ion-button>
+  </form>
 
 </ion-content>

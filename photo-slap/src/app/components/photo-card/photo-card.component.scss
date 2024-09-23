@@ -11,7 +11,7 @@
   }
 
   &:before {
-    border-radius: 5px;
+    border-radius: 12px;
     content: "";
     position: absolute;
     top: 0;
@@ -36,7 +36,7 @@
     display: flex;
     align-items: flex-end;
 
-    .username {
+    .name {
       margin: 0;
       font-size: 14px;
       font-weight: 500;

@@ -1,28 +1,46 @@
-<ion-content [fullscreen]="true" class="ion-padding">
-  <form class="form" (submit)="login($event)" [formGroup]="loginForm">
-    <div class="container-top">
+<ion-content>
+  <form class="form" (submit)="onLogin()" [formGroup]="form">
+    <div>
       <h1 class="title">Ingresa a tu cuenta</h1>
+      <p class="description">Completa tus datos</p>
 
-      <div class="form-field">
-        <label class="label">Correo Electronico</label>
-        <input type="text" class="input" placeholder="Correo Electronico" />
-        @if (emailControl.invalid && (emailControl.touched ||
-        emailControl.dirty)) { @if (emailControl.hasError('required')) {
-        <p class="error-message">El correo electronico no puede estar vacio</p>
-        } @if (emailControl.hasError('email')) {
-        <p class="error-message">Ingrese un correo electronico valido</p>
-        } }
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Correo electronico"
+          class="input input-email"
+          formControlName="email"
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          class="input input-password"
+          formControlName="password"
+        />
+
+        @if (hasError) {
+        <p class="error-message">
+          Correo electronico y/o contraseña incorrectos.
+        </p>
+        }
       </div>
-      <div class="form-field">
-        <label class="label">Contraseña</label>
-        <input type="text" class="input" placeholder="Contraseña" />
-        @if (emailControl.invalid && emailControl.touched) { @if
-        (emailControl.hasError('required')) {
-        <p class="error-message">La contraseña no puede estar vacia</p>
-        } }
-      </div>
+
+      <button
+        type="submit"
+        class="button"
+        [disabled]="(form.statusChanges | async) !== 'VALID'"
+      >
+        @if (isLoading) { Cargando... } @else { Ingresar }
+      </button>
     </div>
 
-    <button type="submit" class="button">Ingresar</button>
+    <div class="accounts">
+      @for (account of accounts; track $index) {
+      <app-account-card
+        [role]="account.role"
+        (click)="onSelectedAccount(account)"
+      />
+      }
+    </div>
   </form>
 </ion-content>

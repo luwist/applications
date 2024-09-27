@@ -94,7 +94,7 @@ export class LoginPage {
 
       await this._authService.login(credentials);
 
-      this._router.navigateByUrl('/explore', { replaceUrl: true });
+      this._router.navigateByUrl('/', { replaceUrl: true });
     } catch (error) {
       // this.isToastOpen = true;
     } finally {

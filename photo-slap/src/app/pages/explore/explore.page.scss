@@ -4,8 +4,9 @@
 }
 
 .gallery {
-  columns: 2;
-  column-gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
 
 .content-empty {

@@ -1,0 +1,19 @@
+<div class="wrapper">
+  @for (item of items; track $index) {
+    @if (item.itemDefault) {
+      <button type="button" class="button">
+        <img [src]="item.icon" alt="">
+      </button>
+    }
+  }
+
+  <div class="content">
+    @for (item of items; track $index) {
+      @if (!item.itemDefault) {
+        <button type="button" class="button">
+          <img [src]="item.icon" alt="">
+        </button>
+      }
+    }
+  </div>
+</div>

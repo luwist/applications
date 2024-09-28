@@ -1,0 +1,30 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.content {
+    position: absolute;
+    bottom: 94px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.button {
+    background-color: #ffc93d;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 48px;
+        height: auto;
+    }
+}

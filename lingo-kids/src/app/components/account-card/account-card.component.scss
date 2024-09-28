@@ -5,11 +5,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: .875rem;
   text-transform: capitalize;
   gap: 8px;
   color: #fff;
   border: 2px solid #d8d8d8;
   border-bottom: 4px solid #d8d8d8;
   background-color: #353535;
-  border-radius: 12px;
+  border-radius: 14px;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
 }

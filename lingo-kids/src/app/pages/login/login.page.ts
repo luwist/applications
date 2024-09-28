@@ -80,14 +80,15 @@ export class LoginPage {
       const credentials = this.form.getRawValue() as Login;
 
       this.form.markAsPending();
+      this.isLoading = true;
 
       await this._authService.login(credentials);
 
-      this._router.navigateByUrl('/home', { replaceUrl: true });
+      this._router.navigateByUrl('/', { replaceUrl: true });
     } catch (error) {
-      // this.isToastOpen = true;
+      this.hasError = true;
     } finally {
-      // this.buttonText = 'Ingresar';
+      this.isLoading = false;
     }
   }
 }

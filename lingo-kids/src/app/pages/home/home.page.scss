@@ -1,0 +1,26 @@
+ion-content {
+    --padding-top: 40px;
+  --padding-start: 32px;
+  --padding-end: 32px;
+  --padding-bottom: 40px;
+    --background: #ffe066;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+
+    .box {
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .animal {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

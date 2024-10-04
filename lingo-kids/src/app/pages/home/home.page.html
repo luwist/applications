@@ -1,30 +1,44 @@
 <ion-content>
   <div class="wrapper">
-    @switch (currentTheme) {
-      @case ('animals') {
-        @for (animal of animals; track $index) {
-          <button class="box" (click)="onItemSelected(animal)" [ngClass]="itemSelected == animal.id ? 'show' : 'hide'">
-            <img [src]="animal.image" alt="">
-          </button>
-        }
-      }
-
-      @case ('colors') {
-        @for (color of colors; track $index) {
-          <button class="box">
-            <svg width="128" height="138" viewBox="0 0 128 138" fill="none" xmlns="http://www.w3.org/2000/svg" style="fill: {{ color.color }};">
-              <path d="m123.738 53.586.001.01.002.01c2.139 16.943 4.02 32.845-.583 47.825-4.625 14.876-15.729 28.638-29.012 32.944-6.608 2.143-13.896 2.011-21.651.51-7.76-1.501-15.854-4.345-24.028-7.5-16.458-6.354-32.023-13.54-39.812-26.07l-.005-.007-.005-.008C.7 88.769.15 70.298 5.556 55.63c5.368-14.562 16.786-25.518 28.647-34.404 11.822-8.858 23.986-15.52 37.985-18.08 7.029-1.284 14.532-1.574 21.365-.433 6.839 1.14 12.872 3.689 17.156 7.957 4.304 4.376 7.095 10.74 9.045 18.305 1.947 7.554 2.999 16.074 3.984 24.61Z" stroke="#fff" stroke-width="4"/>
-            </svg>
-          </button>
-        }
-      }
-
-      @case ('numbers') {
-        @for (number of numbers; track $index) {
-          <button class="box">{{ number.number }}</button>
-        }
-      }
-    }
+    @switch (currentTheme) { @case ('animals') { @for (animal of animals; track
+    $index) {
+    <button
+      class="box"
+      (click)="onItemSelected(animal)"
+      [ngClass]="itemSelected === animal.id ? 'show' : 'hide'"
+    >
+      <img [src]="animal.image" alt="" />
+    </button>
+    } } @case ('colors') { @for (color of colors; track $index) {
+    <button
+      class="box"
+      (click)="onItemSelected(color)"
+      [ngClass]="itemSelected === color.id ? 'show' : 'hide'"
+    >
+      <svg
+        width="128"
+        height="138"
+        viewBox="0 0 128 138"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style="fill: {{ color.color }};"
+      >
+        <path
+          d="m123.738 53.586.001.01.002.01c2.139 16.943 4.02 32.845-.583 47.825-4.625 14.876-15.729 28.638-29.012 32.944-6.608 2.143-13.896 2.011-21.651.51-7.76-1.501-15.854-4.345-24.028-7.5-16.458-6.354-32.023-13.54-39.812-26.07l-.005-.007-.005-.008C.7 88.769.15 70.298 5.556 55.63c5.368-14.562 16.786-25.518 28.647-34.404 11.822-8.858 23.986-15.52 37.985-18.08 7.029-1.284 14.532-1.574 21.365-.433 6.839 1.14 12.872 3.689 17.156 7.957 4.304 4.376 7.095 10.74 9.045 18.305 1.947 7.554 2.999 16.074 3.984 24.61Z"
+          stroke="#fff"
+          stroke-width="4"
+        />
+      </svg>
+    </button>
+    } } @case ('numbers') { @for (number of numbers; track $index) {
+    <button
+      class="box"
+      (click)="onItemSelected(number)"
+      [ngClass]="itemSelected === number.id ? 'show' : 'hide'"
+    >
+      {{ number.number }}
+    </button>
+    } } }
   </div>
 
   <div class="bottom">

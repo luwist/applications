@@ -1,16 +1,12 @@
 <div class="wrapper">
-  @for (item of items; track $index) {
-    @if (item.itemDefault) {
-      <button type="button" class="button">
-        <img [src]="item.icon" alt="">
-      </button>
-    }
-  }
+  <button type="button" class="button" (click)="onToggle()">
+    <img [src]="currentItem.icon" alt="">
+  </button>
 
-  <div class="content">
+  <div class="content" [ngClass]="show ? 'show' : 'hide'">
     @for (item of items; track $index) {
-      @if (!item.itemDefault) {
-        <button type="button" class="button">
+      @if (currentItem.id !== item.id) {
+        <button type="button" class="button" (click)="onCommand(item)">
           <img [src]="item.icon" alt="">
         </button>
       }

@@ -18,7 +18,7 @@
           formControlName="password"
         />
 
-        @if (hasError || !emailControl.touched || !emailControl.dirty) {
+        @if (form.pending && hasError) {
         <p class="error-message">
           Correo electronico y/o contraseña incorrectos.
         </p>

@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonContent } from '@ionic/angular/standalone';
+import { IonHeader, IonContent, IonFooter, IonToolbar } from '@ionic/angular/standalone';
 import { Language, Theme } from 'src/app/enums';
 import { Item } from 'src/app/interfaces';
 import { SpeedDialComponent } from 'src/app/components/ui/speed-dial/speed-dial.component';
+import { AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonContent, SpeedDialComponent],
+  imports: [CommonModule, IonHeader, IonContent, IonFooter, IonToolbar, SpeedDialComponent],
 })
 export class HomePage {
   animals: any = [
@@ -169,6 +170,8 @@ export class HomePage {
 
   itemSelected!: number;
 
+  constructor(private _authService: AuthService) {}
+
   onItemSelected(item: any): void {
     this.itemSelected = item.id;
   }
@@ -181,5 +184,9 @@ export class HomePage {
   changeTheme(theme: string): void {
     console.log(`Cambiar el tema a ${theme}`);
     this.currentTheme = theme;
+  }
+
+  async onLogout(): Promise<void> {
+    await this._authService.logout();
   }
 }

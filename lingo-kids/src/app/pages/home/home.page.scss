@@ -3,7 +3,6 @@ ion-content {
   --padding-start: 32px;
   --padding-end: 32px;
   --padding-bottom: 40px;
-  --background: #ffe066;
 }
 
 .wrapper {
@@ -39,12 +38,30 @@ ion-content {
 }
 
 .bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  // position: absolute;
+  // bottom: 0;
+  // left: 0;
   width: 100%;
   padding: 20px 0;
   background-color: #ffe066;
+  
+}
+
+.logout {
+  background-color: #ffc93d;
+  width: 184px;
+  height: 48px;
+  border-radius: 0 0 40px 40px;
+  margin: 0 auto;
+}
+
+ion-toolbar {
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
+
+.toolbar {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

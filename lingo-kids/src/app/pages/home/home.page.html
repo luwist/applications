@@ -1,4 +1,16 @@
+<ion-header class="ion-no-border">
+  <!-- <ion-toolbar>
+    <ion-title>Header</ion-title>
+  </ion-toolbar> -->
+  <button type="button" class="logout" (click)="onLogout()">
+    <svg width="28" height="29" viewBox="0 0 28 29" fill="#F66" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.286 6.548a1.134 1.134 0 0 1-.317 1.574A9.07 9.07 0 0 0 4.9 15.69c0 5.016 4.074 9.081 9.1 9.081s9.1-4.065 9.1-9.08a9.07 9.07 0 0 0-4.069-7.569 1.134 1.134 0 0 1-.317-1.574 1.14 1.14 0 0 1 1.577-.317 11.34 11.34 0 0 1 5.084 9.46c0 6.268-5.093 11.35-11.375 11.35S2.625 21.96 2.625 15.692c0-3.95 2.022-7.428 5.084-9.46a1.14 1.14 0 0 1 1.577.317"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M14 1.959c.644 0 1.167.522 1.167 1.166v9.334a1.167 1.167 0 0 1-2.334 0V3.125c0-.644.523-1.166 1.167-1.166"/>
+    </svg>
+  </button>
+</ion-header>
 <ion-content>
+
   <div class="wrapper">
     @switch (currentTheme) { @case ('animals') { @for (animal of animals; track
     $index) {
@@ -40,9 +52,14 @@
     </button>
     } } }
   </div>
-
-  <div class="bottom">
-    <app-speed-dial [items]="languages" />
-    <app-speed-dial [items]="themes" />
-  </div>
 </ion-content>
+<ion-footer class="ion-no-border">
+  <!-- <div class="bottom">
+  </div> -->
+  <ion-toolbar>
+    <div class="toolbar">
+      <app-speed-dial [items]="languages" />
+      <app-speed-dial [items]="themes" />
+    </div>
+  </ion-toolbar>
+</ion-footer>

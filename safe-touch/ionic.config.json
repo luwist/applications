@@ -1,7 +1,0 @@
-{
-  "name": "safe-touch",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

@@ -39,5 +39,25 @@
 :root {
     --ion-font-family: "Raleway", sans-serif;
     --ion-background-color: #413F4A;
+    --ion-color-primary: #5C86F2;
+    --ion-color-secondary: #38363F;
 }
 
+ion-button {
+    --border-radius: 50px;
+    --box-shadow: 0;
+
+    min-height: 56px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-transform: none;
+}
+
+ion-input.input {
+    --color: #808080;
+    --background: transparent;
+    --padding-start: 0;
+    --padding-end: 0;
+    --highlight-height: 1px;
+}

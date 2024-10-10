@@ -6,15 +6,40 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="wrapper">
+    <div class="contain">
+      <button type="button" id="open-modal" class="push-button" [ngClass]="isLocked ? 'disable' : 'enable'" (click)="onToggle()"></button>
+    
+      <div class="content">
+        <h2 class="title">
+          El dispositivo esta 
+          {{ isLocked ? 'bloqueado' : 'desbloqueado' }}
+        </h2>
+        <p class="description">
+          Haga click en el boton para 
+          {{ isLocked ? 'desbloquear' : 'bloquear' }}
+        </p>
+      </div>
+    </div>
   </div>
+
+  <ion-modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <div class="block">
+        <div class="content">
+          <h2 class="title">Desbloquear dispositivo</h2>
+          <p class="description">Ingrese la contraseña para desbloquear el dispositivo</p>
+          <app-input
+            label="Contraseña"
+            placeholder="Contraseña"
+            type="text"
+          />
+          <!-- <ion-input label="Contraseña" labelPlacement="floating" fill="solid" placeholder="Contraseña" class="input"></ion-input> -->
+        </div>
+
+        <ion-button color="secondary" expand="block">Desbloquear</ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
 </ion-content>

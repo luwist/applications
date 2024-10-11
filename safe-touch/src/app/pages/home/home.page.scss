@@ -19,12 +19,19 @@ ion-content {
 
   &.disable {
     background-color: hsl(1, 85%, 65%);
-    box-shadow: 0 0 0 20px hsla(1, 85%, 65%, 0.6), 0 0 0 40px hsla(1, 85%, 65%, 0.4), 0 0 0 60px hsla(1, 85%, 65%, 0.2);
+    box-shadow: 0 0 0 20px hsla(1, 85%, 65%, 0.6),
+      0 0 0 40px hsla(1, 85%, 65%, 0.4), 0 0 0 60px hsla(1, 85%, 65%, 0.2);
   }
-  
+
   &.enable {
     background-color: hsl(155, 85%, 65%);
-    box-shadow: 0 0 0 20px hsla(155, 85%, 65%, 0.6), 0 0 0 40px hsla(155, 85%, 65%, 0.4), 0 0 0 60px hsla(155, 85%, 65%, 0.2);
+    box-shadow: 0 0 0 20px hsla(155, 85%, 65%, 0.6),
+      0 0 0 40px hsla(155, 85%, 65%, 0.4), 0 0 0 60px hsla(155, 85%, 65%, 0.2);
+  }
+
+  svg {
+    width: 56px;
+    height: auto;
   }
 }
 
@@ -47,23 +54,11 @@ ion-content {
     font-size: 16px;
     font-weight: 700;
   }
-  
+
   .description {
     margin: 0;
     color: #808080;
     font-size: 14px;
     font-weight: 400;
   }
-}
-
-.block {
-  width: 100%;
-  padding: 48px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 84px;
-}
-
-ion-modal {
-  --height: auto;
 }

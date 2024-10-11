@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Blank </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div class="contain">
+      <button
+        type="button"
+        class="push-button"
+        id="unlockModal"
+        [ngClass]="isLocked ? 'disable' : 'enable'"
+        (click)="onToggle()"
+      >
+        @if (isLocked) {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+          fill="#fff"
+        >
+          <path
+            d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z"
+          />
+        </svg>
+        } @else {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 576 512"
+          fill="#fff"
+        >
+          <path
+            d="M352 144c0-44.2 35.8-80 80-80s80 35.8 80 80l0 48c0 17.7 14.3 32 32 32s32-14.3 32-32l0-48C576 64.5 511.5 0 432 0S288 64.5 288 144l0 48L64 192c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-192c0-35.3-28.7-64-64-64l-32 0 0-48z"
+          />
+        </svg>
+        }
+      </button>
+
+      <div class="content">
+        <h2 class="title">
+          El dispositivo esta {{ isLocked ? 'bloqueado' : 'desbloqueado' }}
+        </h2>
+        <p class="description">
+          Haga click en el boton para {{ isLocked ? 'desbloquear' : 'bloquear'
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <ion-modal [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <div class="block">
+        <div class="content">
+          <h2 class="title">Desbloquear dispositivo</h2>
+          <p class="description">
+            Ingrese la contraseña para desbloquear el dispositivo
+          </p>
+          <app-input label="Contraseña" placeholder="Contraseña" type="text" />
+        </div>
+        <ion-button color="secondary" expand="block" (click)="onUnlock()"
+          >Desbloquear</ion-button
+        >
+      </div>
+    </ng-template>
+  </ion-modal> -->
+</ion-content>

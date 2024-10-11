@@ -1,1 +1,3 @@
-export * from './ui/input/input.component';
+export * from './ui';
+export * from './ui/input';
+export * from './unlock-modal/unlock-modal.component';

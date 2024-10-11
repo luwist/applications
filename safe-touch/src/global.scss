@@ -37,27 +37,32 @@
 /* @import '@ionic/angular/css/palettes/dark.system.css'; */
 
 :root {
-    --ion-font-family: "Raleway", sans-serif;
-    --ion-background-color: #413F4A;
-    --ion-color-primary: #5C86F2;
-    --ion-color-secondary: #38363F;
+  --ion-font-family: "Raleway", sans-serif;
+  --ion-background-color: #413f4a;
+  --ion-text-color: #ffffff;
+  --ion-color-primary: #5c86f2;
+  --ion-color-secondary: #38363f;
 }
 
 ion-button {
-    --border-radius: 50px;
-    --box-shadow: 0;
+  --border-radius: 50px;
+  --box-shadow: 0;
 
-    min-height: 56px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #FFFFFF;
-    text-transform: none;
+  min-height: 56px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: none;
 }
 
-ion-input.input {
-    --color: #808080;
-    --background: transparent;
-    --padding-start: 0;
-    --padding-end: 0;
-    --highlight-height: 1px;
+ion-input {
+  --color: #808080;
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  --highlight-height: 1px;
+}
+
+ion-modal {
+  --height: auto;
 }

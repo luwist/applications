@@ -1,0 +1,26 @@
+<ion-content>
+  <form class="form" (submit)="onLogin()">
+    <div>
+      <h1>
+        ¡Hola! <br />
+        Bienvenido de vuelta
+      </h1>
+
+      <app-input
+        type="text"
+        label="Correo electronico"
+        placeholder="Correo electronico"
+      />
+      <!-- <ion-input
+        label="Correo electronico"
+        label-placement="floating"
+        fill="solid"
+        placeholder="Correo electronico"
+      ></ion-input> -->
+    </div>
+
+    <ion-button type="submit" expand="block" color="secondary"
+      >Iniciar sesión</ion-button
+    >
+  </form>
+</ion-content>

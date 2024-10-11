@@ -1,0 +1,35 @@
+.contain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 86px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  .title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .description {
+    margin: 0;
+    color: #808080;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+.block {
+  width: 100%;
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 84px;
+}

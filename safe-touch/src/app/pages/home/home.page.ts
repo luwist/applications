@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { Motion } from '@capacitor/motion';
+import { CapacitorFlash } from '@capgo/capacitor-flash';
 import {
   IonHeader,
   IonToolbar,
@@ -33,7 +35,7 @@ import { AuthService } from 'src/app/services';
     InputComponent,
   ],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
   currentUser$!: Observable<User | null>;
   isLocked: boolean = false;
 
@@ -47,15 +49,29 @@ export class HomePage implements OnInit {
     this.currentUser$ = this._authService.currentUser$;
   }
 
+  async checkOrientation(): Promise<void> {
+    // await DeviceMotionEvent.requestPermission();
+
+    await Motion.addListener('accel', (event) => {
+      const rotationRate = event.rotationRate;
+
+      if (rotationRate.beta > 90) {
+        CapacitorFlash.switchOn({
+          intensity: 100,
+        });
+      } else {
+        CapacitorFlash.switchOff();
+      }
+    });
+  }
+
   async onToggle(): Promise<void> {
-    if (!this.isLocked) {
-      this.isLocked = true;
-
-      this.showModal();
-    }
-
     if (this.isLocked) {
+      await this.checkOrientation();
+
       this.showModal();
+    } else {
+      this.isLocked = true;
     }
   }
 
@@ -82,5 +98,9 @@ export class HomePage implements OnInit {
     await this._authService.logout();
 
     this._router.navigateByUrl('/login');
+  }
+
+  ngOnDestroy(): void {
+    Motion.removeAllListeners();
   }
 }

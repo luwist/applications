@@ -77,3 +77,40 @@ app-input.ng-invalid.ng-touched .content {
     color: var(--ion-color-danger);
   }
 }
+
+ion-select {
+  --height: 56px;
+
+  font-size: 14px;
+  color: #808080;
+}
+
+.alert-radio-group.sc-ion-alert-md,
+.alert-checkbox-group.sc-ion-alert-md {
+  position: relative;
+  border-top: 1px solid #555260;
+  border-bottom: 1px solid #555260;
+  overflow: auto;
+}
+
+.alert-button.sc-ion-alert-md {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.alert-radio-label.sc-ion-alert-md {
+  padding-inline-start: 40px;
+  color: #808080;
+  text-transform: capitalize;
+}
+
+[aria-checked="true"].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+  color: #ffffff;
+}
+
+ion-select::part(text) {
+  color: #808080;
+  text-transform: capitalize;
+  font-size: 14px;
+  flex: 1 0 auto;
+}

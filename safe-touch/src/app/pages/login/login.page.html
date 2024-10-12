@@ -6,22 +6,61 @@
         Bienvenido de vuelta
       </h1>
 
-      <app-input
-        label="Correo electronico"
-        placeholder="Correo electronico"
-        formControlName="email"
-      />
+      <ion-select
+        placeholder="Seleccione su cuenta"
+        (ionChange)="onAccount($event)"
+      >
+        @for (account of accounts; track $index) {
+        <ion-select-option [value]="account.role"
+          >{{ account.role }}</ion-select-option
+        >
+        }
+      </ion-select>
 
-      <app-input
-        type="password"
-        label="Contraseña"
-        placeholder="Contraseña"
-        formControlName="password" 
-      />
+      <app-divider label="o continua con tu correo electrónico" />
+
+      <div class="content first">
+        <input
+          type="text"
+          class="input"
+          placeholder="Correo electrónico"
+          [ngClass]="{ 'hasError': hasError && !isLoading && form.pending }"
+          formControlName="email"
+        />
+        <label class="label">Correo electrónico</label>
+      </div>
+
+      <div class="content">
+        <input
+          type="password"
+          class="input"
+          placeholder="Contraseña"
+          [ngClass]="{ 'hasError': hasError && !isLoading && form.pending }"
+          formControlName="password"
+        />
+        <label class="label">Contraseña</label>
+      </div>
+
+      @if (form.pending && hasError) {
+      <p class="error-message">
+        El correo electronico o contraseña son incorrectos. Vuelve a ingresar tu
+        informacion.
+      </p>
+      }
     </div>
 
-    <ion-button type="submit" expand="block" color="secondary"
-      >Iniciar sesión</ion-button
+    <button
+      type="submit"
+      class="login"
+      [disabled]="(form.statusChanges | async) !== 'VALID'"
     >
+      @if (isLoading) {
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+      } @else { Iniciar sesión }
+    </button>
   </form>
 </ion-content>

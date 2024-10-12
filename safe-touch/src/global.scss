@@ -41,6 +41,7 @@
   --ion-background-color: #413f4a;
   --ion-text-color: #ffffff;
   --ion-color-primary: #5c86f2;
+  --ion-color-danger: #f25c5a;
   --ion-color-secondary: #38363f;
 }
 
@@ -65,4 +66,14 @@ ion-input {
 
 ion-modal {
   --height: auto;
+}
+
+app-input.ng-invalid.ng-touched .content {
+  .input {
+    border-bottom: 1px solid var(--ion-color-danger);
+  }
+
+  .label {
+    color: var(--ion-color-danger);
+  }
 }

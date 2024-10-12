@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -10,7 +12,9 @@ import {
   IonButton,
   ModalController,
 } from '@ionic/angular/standalone';
+import { Observable } from 'rxjs';
 import { InputComponent, UnlockModalComponent } from 'src/app/components';
+import { AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-home',
@@ -29,12 +33,19 @@ import { InputComponent, UnlockModalComponent } from 'src/app/components';
     InputComponent,
   ],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  currentUser$!: Observable<User | null>;
   isLocked: boolean = false;
 
-  pass = '12452';
+  constructor(
+    private _modalController: ModalController,
+    private _authService: AuthService,
+    private _router: Router
+  ) {}
 
-  constructor(private _modalController: ModalController) {}
+  ngOnInit(): void {
+    this.currentUser$ = this._authService.currentUser$;
+  }
 
   async onToggle(): Promise<void> {
     if (!this.isLocked) {
@@ -60,10 +71,16 @@ export class HomePage {
   }
 
   async onUnlock(): Promise<void> {
-    if (this.isLocked && this.pass === '12452') {
+    if (this.isLocked) {
       this.isLocked = false;
 
       await this._modalController.dismiss();
     }
+  }
+
+  async onLogout(): Promise<void> {
+    await this._authService.logout();
+
+    this._router.navigateByUrl('/login');
   }
 }

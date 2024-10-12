@@ -5,6 +5,11 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo('/login');
 
 export const routes: Routes = [
   {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.page').then((m) => m.LoginPage),
+  },
+  {
     path: '',
     loadComponent: () =>
       import('./pages/home/home.page').then((m) => m.HomePage),
@@ -12,10 +17,5 @@ export const routes: Routes = [
     data: {
       authGuardPipe: redirectUnauthorizedToLogin,
     },
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./pages/login/login.page').then((m) => m.LoginPage),
   },
 ];

@@ -1,22 +1,23 @@
 <ion-content>
-  <form class="form" (submit)="onLogin()">
+  <form class="form" [formGroup]="form" (submit)="onLogin()">
     <div>
-      <h1>
+      <h1 class="title">
         ¡Hola! <br />
         Bienvenido de vuelta
       </h1>
 
       <app-input
-        type="text"
         label="Correo electronico"
         placeholder="Correo electronico"
+        formControlName="email"
       />
-      <!-- <ion-input
-        label="Correo electronico"
-        label-placement="floating"
-        fill="solid"
-        placeholder="Correo electronico"
-      ></ion-input> -->
+
+      <app-input
+        type="password"
+        label="Contraseña"
+        placeholder="Contraseña"
+        formControlName="password" 
+      />
     </div>
 
     <ion-button type="submit" expand="block" color="secondary"

@@ -1,7 +1,11 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Blank </ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border">
+  <div class="header">
+    @if (currentUser$ | async; as currentUser) {
+      <img [src]="currentUser.photoURL" alt="" class="picture">
+    }
+
+    <button type="button" (click)="onLogout()" class="logout">Cerrar sesión</button>
+  </div>
 </ion-header>
 
 <ion-content>
@@ -48,21 +52,4 @@
       </div>
     </div>
   </div>
-
-  <!-- <ion-modal [initialBreakpoint]="1" [breakpoints]="[0, 1]">
-    <ng-template>
-      <div class="block">
-        <div class="content">
-          <h2 class="title">Desbloquear dispositivo</h2>
-          <p class="description">
-            Ingrese la contraseña para desbloquear el dispositivo
-          </p>
-          <app-input label="Contraseña" placeholder="Contraseña" type="text" />
-        </div>
-        <ion-button color="secondary" expand="block" (click)="onUnlock()"
-          >Desbloquear</ion-button
-        >
-      </div>
-    </ng-template>
-  </ion-modal> -->
 </ion-content>

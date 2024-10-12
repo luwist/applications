@@ -2,6 +2,30 @@ ion-content {
   height: 100%;
 }
 
+.header {
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .picture {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .logout {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ion-color-danger);
+  }
+}
+
 .wrapper {
   height: 100%;
   display: flex;

@@ -1,4 +1,4 @@
 <div class="content">
-  <input [type]="type" class="input">
+  <input [type]="type" class="input" [placeholder]="placeholder" (input)="onInput($event)">
   <label class="label">{{ label }}</label>
 </div>

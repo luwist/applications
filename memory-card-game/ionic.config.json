@@ -1,0 +1,7 @@
+{
+  "name": "memory-card-game",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

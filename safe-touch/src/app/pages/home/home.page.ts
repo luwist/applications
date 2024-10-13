@@ -4,6 +4,7 @@ import { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Motion } from '@capacitor/motion';
 import { CapacitorFlash } from '@capgo/capacitor-flash';
+import {NativeAudio} from '@capacitor-community/native-audio';
 import {
   IonHeader,
   IonToolbar,
@@ -39,14 +40,38 @@ export class HomePage implements OnInit, OnDestroy {
   currentUser$!: Observable<User | null>;
   isLocked: boolean = false;
 
+  sounds: any = [
+    {
+      id: 1,
+      name: 'police',
+      url: 'assets/sounds/police.mp3'
+    },
+    {
+      id: 2,
+      name: 'alarm',
+      url: 'assets/sounds/alarm.mp3'
+    }
+  ]
+
   constructor(
     private _modalController: ModalController,
     private _authService: AuthService,
     private _router: Router
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.currentUser$ = this._authService.currentUser$;
+
+    this.sounds.forEach((sound: any) => {
+      NativeAudio.preload({
+        assetId: sound.name,
+        assetPath: sound.url,
+        audioChannelNum: 1,
+        isUrl: false
+    });
+    });
+
+    await this.checkOrientation();
   }
 
   async checkOrientation(): Promise<void> {
@@ -55,11 +80,18 @@ export class HomePage implements OnInit, OnDestroy {
 
       const beta = Math.atan2(y, z) * (180 / Math.PI);
 
-      if (beta > 90) {
+      if (beta > 90 && this.isLocked) {
         await CapacitorFlash.switchOn({
           intensity: 100,
         });
+
+        NativeAudio.loop({
+          assetId: 'alarm',
+        });
       } else {
+        NativeAudio.loop({
+          assetId: 'police',
+        });
         await CapacitorFlash.switchOff();
       }
     });
@@ -67,8 +99,6 @@ export class HomePage implements OnInit, OnDestroy {
 
   async onToggle(): Promise<void> {
     if (this.isLocked) {
-      await this.checkOrientation();
-
       this.showModal();
     } else {
       this.isLocked = true;

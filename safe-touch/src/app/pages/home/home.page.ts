@@ -50,17 +50,17 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   async checkOrientation(): Promise<void> {
-    // await DeviceMotionEvent.requestPermission();
+    await Motion.addListener('accel', async (event) => {
+      const { x, y, z } = event.accelerationIncludingGravity;
 
-    await Motion.addListener('accel', (event) => {
-      const rotationRate = event.rotationRate;
+      const beta = Math.atan2(y, z) * (180 / Math.PI);
 
-      if (rotationRate.beta > 90) {
-        CapacitorFlash.switchOn({
+      if (beta > 90) {
+        await CapacitorFlash.switchOn({
           intensity: 100,
         });
       } else {
-        CapacitorFlash.switchOff();
+        await CapacitorFlash.switchOff();
       }
     });
   }

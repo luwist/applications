@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonHeader, IonContent, IonFooter, IonToolbar } from '@ionic/angular/standalone';
+import {
+  IonHeader,
+  IonContent,
+  IonFooter,
+  IonToolbar,
+} from '@ionic/angular/standalone';
 import { Language, Theme } from 'src/app/enums';
 import { Item } from 'src/app/interfaces';
 import { SpeedDialComponent } from 'src/app/components/ui/speed-dial/speed-dial.component';
@@ -11,14 +16,41 @@ import { AuthService } from 'src/app/services';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonHeader, IonContent, IonFooter, IonToolbar, SpeedDialComponent],
+  imports: [
+    CommonModule,
+    IonHeader,
+    IonContent,
+    IonFooter,
+    IonToolbar,
+    SpeedDialComponent,
+  ],
 })
 export class HomePage {
+  // themes: any = {
+  //   animals: [
+  //     {
+  //       id: 1,
+  //       image: 'assets/animals/camaleon.png',
+  //       sounds: {
+  //         en: 'assets/sounds/animals/camaleon.mp4',
+  //         es: 'assets/sounds/animals/camaleon.mp4',
+  //         pt: 'assets/sounds/animals/camaleon.mp4',
+  //       }
+  //     },
+  //   ],
+  //   colors: [],
+  //   numbers: [],
+  // };
+
   animals: any = [
     {
       id: 1,
       image: 'assets/animals/camaleon.png',
-      sound: 'assets/sounds/animals/camaleon.mp4',
+      sounds: {
+        en: 'assets/sounds/animals/camaleon.mp4',
+        es: 'assets/sounds/animals/camaleon.mp4',
+        pt: 'assets/sounds/animals/camaleon.mp4',
+      },
     },
     {
       id: 2,
@@ -170,10 +202,18 @@ export class HomePage {
 
   itemSelected!: number;
 
+  isActive: boolean = false;
+
   constructor(private _authService: AuthService) {}
 
   onItemSelected(item: any): void {
     this.itemSelected = item.id;
+
+    this.isActive = true;
+
+    setTimeout(() => {
+      this.isActive = false;
+    }, 3000);
   }
 
   changeLanguage(language: string): void {

@@ -2,7 +2,15 @@ ion-content {
   --padding-top: 40px;
   --padding-start: 32px;
   --padding-end: 32px;
-  --padding-bottom: 40px;
+}
+
+.footer {
+  position: sticky;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 20px 0;
+  background-color: #ffe066;
 }
 
 .wrapper {
@@ -35,16 +43,6 @@ ion-content {
       height: auto;
     }
   }
-}
-
-.bottom {
-  // position: absolute;
-  // bottom: 0;
-  // left: 0;
-  width: 100%;
-  padding: 20px 0;
-  background-color: #ffe066;
-  
 }
 
 .logout {

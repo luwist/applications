@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import {
+  CapacitorBarcodeScanner,
+  CapacitorBarcodeScannerTypeHintALLOption,
+} from '@capacitor/barcode-scanner';
+import {
   IonHeader,
   IonToolbar,
   IonTitle,
@@ -51,17 +55,30 @@ import { AuthService } from 'src/app/services';
 })
 export class HomePage implements OnInit {
   currentUser$!: Observable<User | null>;
+  point: number = 0;
 
   constructor(private _authService: AuthService, private _router: Router) {}
 
   ngOnInit(): void {
     this.currentUser$ = this._authService.currentUser$;
-
-    console.log('Home Inicializada');
   }
 
-  logout(): void {
-    this._authService.logout();
+  async onAdd(): Promise<void> {
+    const result = await CapacitorBarcodeScanner.scanBarcode({
+      hint: CapacitorBarcodeScannerTypeHintALLOption.ALL,
+    });
+
+    const point = result.ScanResult;
+
+    console.log(point);
+  }
+
+  onClear(): void {
+    this.point = 0;
+  }
+
+  async logout(): Promise<void> {
+    await this._authService.logout();
 
     this._router.navigateByUrl('/login', { replaceUrl: true });
   }

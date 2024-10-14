@@ -1,9 +1,9 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'credit-wallet',
-  webDir: 'www'
+  appId: 'io.ionic.credit.wallet',
+  appName: 'Carga de credito',
+  webDir: 'www',
 };
 
 export default config;

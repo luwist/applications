@@ -30,21 +30,44 @@
 <div class="ion-page" id="main-content">
   <ion-header class="ion-no-border">
     <div class="toolbar">
-      <ion-buttons slot="start">
+      @if (currentUser$ | async; as currentUser) {
         <ion-menu-toggle>
-          <ion-button>
-            <ion-avatar>
-              <img
-                [src]="(currentUser$ | async)?.photoURL"
-                alt="Profile picture"
-                class="avatar-header"
-              />
-            </ion-avatar>
-          </ion-button>
+          <img
+            [src]="currentUser.photoURL"
+            alt="Profile picture"
+            class="avatar-header"
+          />
         </ion-menu-toggle>
-      </ion-buttons>
+        <div>
+          ¡Hola!
+  
+          <h2 class="name">{{ currentUser.displayName }}</h2>
+        </div>
+      }
     </div>
 
-    <div></div>
   </ion-header>
 </div>
+
+<ion-content>
+  <div class="wrapper">
+    <div class="content">
+      <div class="body">
+        <h1 class="point">{{ point }}</h1>
+        <p class="description">Tus creditos</p>
+      </div>
+    </div>
+
+    <div>
+      <ion-button
+        type="submit"
+        expand="block"
+        (click)="onAdd()"
+        >Escanear QR</ion-button
+      >
+      <ion-button id="open-modal" expand="block" fill="clear" (click)="onClear()"
+        >Borrar creditos</ion-button
+      >
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,70 @@
+<ion-content>
+  <form [formGroup]="form" class="wrapper" (submit)="onLogin()">
+    <div>
+      <h1 class="title">¡Bienvenido de nuevo!</h1>
+
+      <div class="form-field">
+        <label class="label">
+          Correo electronico
+
+          <ion-input
+            fill="outline"
+            class="input"
+            placeholder="Correo electronico"
+            name="email"
+            formControlName="email"
+          ></ion-input>
+        </label>
+      </div>
+
+      <label class="label">
+        Contraseña
+
+        <ion-input
+          type="password"
+          fill="outline"
+          class="input"
+          placeholder="Contraseña"
+          name="password"
+          formControlName="password"
+        ></ion-input>
+      </label>
+    </div>
+
+    <div>
+      <ion-button
+        type="submit"
+        expand="block"
+        [disabled]="(form.statusChanges | async) !== 'VALID'"
+        >{{ buttonText }}</ion-button
+      >
+      <ion-button id="open-modal" expand="block" fill="clear"
+        >Acceso rapido</ion-button
+      >
+    </div>
+
+    <ion-modal
+      trigger="open-modal"
+      [initialBreakpoint]="1"
+      [breakpoints]="[0, 1]"
+    >
+      <ng-template>
+        <div class="block">
+          <ion-list lines="none">
+            @for (account of accounts; track $index) {
+            <ion-item button="true" (click)="onSelectedAccount(account)">
+              <ion-avatar slot="start">
+                <ion-img [src]="account.picture"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2>{{ account.name }}</h2>
+                <p class="role">{{ account.role }}</p>
+              </ion-label>
+            </ion-item>
+            }
+          </ion-list>
+        </div>
+      </ng-template>
+    </ion-modal>
+  </form>
+</ion-content>

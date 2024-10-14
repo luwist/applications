@@ -1,0 +1,50 @@
+<ion-menu contentId="main-content">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div class="user">
+        <img
+          [src]="(currentUser$ | async)?.photoURL"
+          alt="Profile picture"
+          class="avatar"
+        />
+        <div class="content">
+          <span class="username"
+            >{{ (currentUser$ | async)?.displayName }}</span
+          >
+          <span class="email">{{ (currentUser$ | async)?.email }}</span>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list lines="none">
+      <ion-item button class="logout" (click)="logout()">
+        <ion-icon src="assets/icon/logout.svg"></ion-icon>
+        <ion-label color="danger">Cerrar sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header class="ion-no-border">
+    <div class="toolbar">
+      <ion-buttons slot="start">
+        <ion-menu-toggle>
+          <ion-button>
+            <ion-avatar>
+              <img
+                [src]="(currentUser$ | async)?.photoURL"
+                alt="Profile picture"
+                class="avatar-header"
+              />
+            </ion-avatar>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-buttons>
+    </div>
+
+    <div></div>
+  </ion-header>
+</div>

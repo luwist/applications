@@ -34,4 +34,22 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+:root {
+  --ion-font-family: "Urbanist", sans-serif;
+  --ion-background-color: #242529;
+  --ion-text-color: #ffffff;
+  --ion-color-primary: #70c1b3;
+  --ion-color-danger: #c17070;
+}
+
+ion-button {
+  --border-radius: 50px;
+  height: 56px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  --box-shadow: 0px 0px 0px 0px;
+  letter-spacing: 0;
+}

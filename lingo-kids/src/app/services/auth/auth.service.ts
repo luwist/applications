@@ -20,6 +20,6 @@ export class AuthService {
   async logout(): Promise<void> {
     await signOut(this._auth);
 
-    this._router.navigateByUrl('/login');
+    this._router.navigateByUrl('/login', { replaceUrl: true });
   }
 }

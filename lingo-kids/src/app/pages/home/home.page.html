@@ -1,7 +1,4 @@
 <ion-header class="ion-no-border">
-  <!-- <ion-toolbar>
-    <ion-title>Header</ion-title>
-  </ion-toolbar> -->
   <div class="toolbar">
     <button type="button" class="logout" (click)="onLogout()">
       <svg
@@ -29,19 +26,11 @@
   <div class="wrapper">
     @switch (currentTheme) { @case ('animals') { @for (animal of animals; track
     $index) {
-    <button
-      class="box"
-      (click)="onItemSelected(animal)"
-      [ngClass]="itemSelected === animal.id && isActive ? 'show' : 'hide'"
-    >
+    <button class="box" (click)="onItemSelected(animal)">
       <img [src]="animal.image" alt="" />
     </button>
     } } @case ('colors') { @for (color of colors; track $index) {
-    <button
-      class="box"
-      (click)="onItemSelected(color)"
-      [ngClass]="itemSelected === color.id ? 'show' : 'hide'"
-    >
+    <button class="box" (click)="onItemSelected(color)">
       <svg
         width="128"
         height="138"

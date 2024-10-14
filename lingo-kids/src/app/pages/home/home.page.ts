@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   IonHeader,
@@ -10,6 +10,7 @@ import { Language, Theme } from 'src/app/enums';
 import { Item } from 'src/app/interfaces';
 import { SpeedDialComponent } from 'src/app/components/ui/speed-dial/speed-dial.component';
 import { AuthService } from 'src/app/services';
+import { NativeAudio } from '@capacitor-community/native-audio';
 
 @Component({
   selector: 'app-home',
@@ -25,137 +26,175 @@ import { AuthService } from 'src/app/services';
     SpeedDialComponent,
   ],
 })
-export class HomePage {
-  // themes: any = {
-  //   animals: [
-  //     {
-  //       id: 1,
-  //       image: 'assets/animals/camaleon.png',
-  //       sounds: {
-  //         en: 'assets/sounds/animals/camaleon.mp4',
-  //         es: 'assets/sounds/animals/camaleon.mp4',
-  //         pt: 'assets/sounds/animals/camaleon.mp4',
-  //       }
-  //     },
-  //   ],
-  //   colors: [],
-  //   numbers: [],
-  // };
-
-  animals: any = [
+export class HomePage implements OnInit {
+  animals: any[] = [
     {
       id: 1,
       image: 'assets/animals/camaleon.png',
       sounds: {
-        en: 'assets/sounds/animals/camaleon.mp4',
-        es: 'assets/sounds/animals/camaleon.mp4',
-        pt: 'assets/sounds/animals/camaleon.mp4',
+        en: 'assets/sounds/animals/chameleon.mp3',
+        es: 'assets/sounds/animals/camaleon.mp3',
+        pt: 'assets/sounds/animals/camaleão.mp3',
       },
     },
     {
       id: 2,
-      image: 'assets/animals/cerdo.png',
-      name: 'cerdo',
+      image: 'assets/animals/chancho.png',
+      sounds: {
+        en: 'assets/sounds/animals/pig.mp3',
+        es: 'assets/sounds/animals/cerdo.mp3',
+        pt: 'assets/sounds/animals/porco.mp3',
+      },
     },
     {
       id: 3,
       image: 'assets/animals/elefante.png',
-      name: 'elefante',
+      sounds: {
+        en: 'assets/sounds/animals/elephant.mp3',
+        es: 'assets/sounds/animals/elefante-arg.mp3',
+        pt: 'assets/sounds/animals/elefante-pt.mp3',
+      },
     },
     {
       id: 4,
       image: 'assets/animals/cangrejo.png',
-      name: 'cangrejo',
+      sounds: {
+        en: 'assets/sounds/animals/crab.mp3',
+        es: 'assets/sounds/animals/cangrejo.mp3',
+        pt: 'assets/sounds/animals/caranguejo.mp3',
+      },
     },
     {
       id: 5,
-      image: 'assets/animals/erizo.png',
-      name: 'erizo',
+      image: 'assets/animals/hipopotamo.png',
+      sounds: {
+        en: 'assets/sounds/animals/hippo.mp3',
+        es: 'assets/sounds/animals/hipopotamo.mp3',
+        pt: 'assets/sounds/animals/hipopotamo-pt.mp3',
+      },
     },
     {
       id: 6,
-      image: 'assets/animals/hipopotamo.png',
-      name: 'hipopotamo',
-    },
-    {
-      id: 7,
       image: 'assets/animals/leon.png',
-      name: 'leon',
-    },
-    {
-      id: 8,
-      image: 'assets/animals/oveja.png',
-      name: 'oveja',
+      sounds: {
+        en: 'assets/sounds/animals/lion.mp3',
+        es: 'assets/sounds/animals/leon.mp3',
+        pt: 'assets/sounds/animals/leão.mp3',
+      },
     },
   ];
 
-  colors: any = [
+  colors: any[] = [
     {
       id: 1,
       color: '#5364FF',
+      sounds: {
+        en: 'assets/sounds/animals/blue.mp3',
+        es: 'assets/sounds/animals/azul.mp3',
+        pt: 'assets/sounds/animals/azul-pt.mp3',
+      },
     },
     {
       id: 2,
       color: '#FFA653',
+      sounds: {
+        en: 'assets/sounds/animals/orange.mp3',
+        es: 'assets/sounds/animals/naranja.mp3',
+        pt: 'assets/sounds/animals/laranja.mp3',
+      },
     },
     {
       id: 3,
-      color: '#E57E25',
+      color: '#FF5364',
+      sounds: {
+        en: 'assets/sounds/animals/rose.mp3',
+        es: 'assets/sounds/animals/rosa.mp3',
+        pt: 'assets/sounds/animals/rosa-pt.mp3',
+      },
     },
     {
       id: 4,
-      color: '#FF5364',
+      color: '#4FBA6F',
+      sounds: {
+        en: 'assets/sounds/animals/green.mp3',
+        es: 'assets/sounds/animals/verde.mp3',
+        pt: 'assets/sounds/animals/verde-pt.mp3',
+      },
     },
     {
       id: 5,
-      color: '#4FBA6F',
+      color: '#955BA5',
+      sounds: {
+        en: 'assets/sounds/animals/violet.mp3',
+        es: 'assets/sounds/animals/violeta.mp3',
+        pt: 'assets/sounds/animals/violeta-pt.mp3',
+      },
     },
     {
       id: 6,
-      color: '#802D40',
-    },
-    {
-      id: 7,
-      color: '#955BA5',
-    },
-    {
-      id: 8,
       color: '#44BBC3',
+      sounds: {
+        en: 'assets/sounds/animals/sky-blue.mp3',
+        es: 'assets/sounds/animals/celeste.mp3',
+        pt: 'assets/sounds/animals/ceu-azul.mp3',
+      },
     },
   ];
 
-  numbers: any = [
+  numbers: any[] = [
     {
       id: 1,
       number: 1,
+      sounds: {
+        en: 'assets/sounds/animals/one.mp3',
+        es: 'assets/sounds/animals/uno.mp3',
+        pt: 'assets/sounds/animals/um.mp3',
+      },
     },
     {
       id: 2,
       number: 2,
-    },
-    {
-      id: 2,
-      number: 2,
+      sounds: {
+        en: 'assets/sounds/animals/two.mp3',
+        es: 'assets/sounds/animals/dos.mp3',
+        pt: 'assets/sounds/animals/dois.mp3',
+      },
     },
     {
       id: 3,
       number: 3,
+      sounds: {
+        en: 'assets/sounds/animals/three.mp3',
+        es: 'assets/sounds/animals/tres.mp3',
+        pt: 'assets/sounds/animals/tres-pt.mp3',
+      },
+    },
+    {
+      id: 4,
+      number: 4,
+      sounds: {
+        en: 'assets/sounds/animals/four.mp3',
+        es: 'assets/sounds/animals/cuatro.mp3',
+        pt: 'assets/sounds/animals/quatro.mp3',
+      },
     },
     {
       id: 5,
       number: 5,
+      sounds: {
+        en: 'assets/sounds/animals/five.mp3',
+        es: 'assets/sounds/animals/cinco.mp3',
+        pt: 'assets/sounds/animals/cinco-pt.mp3',
+      },
     },
     {
       id: 6,
       number: 6,
-    },
-    {
-      id: 7,
-      number: 7,
-    },
-    {
-      id: 8,
-      number: 8,
+      sounds: {
+        en: 'assets/sounds/animals/six.mp3',
+        es: 'assets/sounds/animals/seis.mp3',
+        pt: 'assets/sounds/animals/seis-pt.mp3',
+      },
     },
   ];
 
@@ -206,23 +245,146 @@ export class HomePage {
 
   constructor(private _authService: AuthService) {}
 
+  ngOnInit(): void {
+    this.animals.forEach((animal) => {
+      for (const sound in animal.sounds) {
+        NativeAudio.preload({
+          assetId: animal.sounds[sound],
+          assetPath: animal.sounds[sound],
+          audioChannelNum: 1,
+          isUrl: false,
+        });
+      }
+    });
+
+    this.colors.forEach((color) => {
+      for (const sound in color.sounds) {
+        NativeAudio.preload({
+          assetId: color.sounds[sound],
+          assetPath: color.sounds[sound],
+          audioChannelNum: 1,
+          isUrl: false,
+        });
+      }
+    });
+
+    this.numbers.forEach((number) => {
+      for (const sound in number.sounds) {
+        NativeAudio.preload({
+          assetId: number.sounds[sound],
+          assetPath: number.sounds[sound],
+          audioChannelNum: 1,
+          isUrl: false,
+        });
+      }
+    });
+  }
+
   onItemSelected(item: any): void {
     this.itemSelected = item.id;
 
-    this.isActive = true;
-
-    setTimeout(() => {
-      this.isActive = false;
-    }, 3000);
+    switch (this.currentTheme) {
+      case Theme.Animals:
+        this.animals.forEach((animal) => {
+          for (const sound in animal.sounds) {
+            if (
+              animal.id === item.id &&
+              this.currentLanguage == Language.Spanish &&
+              sound === 'es'
+            ) {
+              NativeAudio.play({
+                assetId: animal.sounds[sound],
+              });
+            } else if (
+              animal.id === item.id &&
+              this.currentLanguage == Language.English &&
+              sound === 'en'
+            ) {
+              NativeAudio.play({
+                assetId: animal.sounds[sound],
+              });
+            } else if (
+              animal.id === item.id &&
+              this.currentLanguage == Language.Portuguese &&
+              sound === 'pt'
+            ) {
+              NativeAudio.play({
+                assetId: animal.sounds[sound],
+              });
+            }
+          }
+        });
+        break;
+      case Theme.Colors:
+        this.colors.forEach((color) => {
+          for (const sound in color.sounds) {
+            if (
+              color.id === item.id &&
+              this.currentLanguage == Language.Spanish &&
+              sound === 'es'
+            ) {
+              NativeAudio.play({
+                assetId: color.sounds[sound],
+              });
+            } else if (
+              color.id === item.id &&
+              this.currentLanguage == Language.English &&
+              sound === 'en'
+            ) {
+              NativeAudio.play({
+                assetId: color.sounds[sound],
+              });
+            } else if (
+              color.id === item.id &&
+              this.currentLanguage == Language.Portuguese &&
+              sound === 'pt'
+            ) {
+              NativeAudio.play({
+                assetId: color.sounds[sound],
+              });
+            }
+          }
+        });
+        break;
+      case Theme.Numbers:
+        this.numbers.forEach((number) => {
+          for (const sound in number.sounds) {
+            if (
+              number.id === item.id &&
+              this.currentLanguage == Language.Spanish &&
+              sound === 'es'
+            ) {
+              NativeAudio.play({
+                assetId: number.sounds[sound],
+              });
+            } else if (
+              number.id === item.id &&
+              this.currentLanguage == Language.English &&
+              sound === 'en'
+            ) {
+              NativeAudio.play({
+                assetId: number.sounds[sound],
+              });
+            } else if (
+              number.id === item.id &&
+              this.currentLanguage == Language.Portuguese &&
+              sound === 'pt'
+            ) {
+              NativeAudio.play({
+                assetId: number.sounds[sound],
+              });
+            }
+          }
+        });
+        break;
+    }
   }
 
   changeLanguage(language: string): void {
-    console.log(`Cambiar el idioma a ${language}`);
     this.currentLanguage = language;
   }
 
   changeTheme(theme: string): void {
-    console.log(`Cambiar el tema a ${theme}`);
     this.currentTheme = theme;
   }
 

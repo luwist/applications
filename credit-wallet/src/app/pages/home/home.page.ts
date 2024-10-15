@@ -3,10 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import {
-  CapacitorBarcodeScanner,
-  CapacitorBarcodeScannerTypeHintALLOption,
-} from '@capacitor/barcode-scanner';
-import {
   IonHeader,
   IonToolbar,
   IonTitle,
@@ -63,15 +59,7 @@ export class HomePage implements OnInit {
     this.currentUser$ = this._authService.currentUser$;
   }
 
-  async onAdd(): Promise<void> {
-    const result = await CapacitorBarcodeScanner.scanBarcode({
-      hint: CapacitorBarcodeScannerTypeHintALLOption.ALL,
-    });
-
-    const point = result.ScanResult;
-
-    console.log(point);
-  }
+  async onAdd(): Promise<void> {}
 
   onClear(): void {
     this.point = 0;

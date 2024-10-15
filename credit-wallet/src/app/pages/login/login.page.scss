@@ -24,6 +24,10 @@ ion-content {
   padding: 32px 0;
 }
 
+.role {
+  text-transform: capitalize;
+}
+
 ion-modal {
   --height: auto;
 }

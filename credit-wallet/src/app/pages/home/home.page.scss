@@ -43,6 +43,13 @@ ion-menu {
   }
 }
 
+.main {
+  margin-top: 92px;
+  height: calc(100vh - 92px);
+  padding: 0 32px;
+  padding-bottom: 32px;
+}
+
 ion-item {
   --color-hover: white;
   --border-radius: 8px;

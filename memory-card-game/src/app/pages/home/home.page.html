@@ -1,0 +1,13 @@
+<ion-content>
+  @switch (currentScene) {
+    @case ('MainMenu') {
+      <app-main-menu (difficultyEvent)="changeDifficulty($event)" />
+    }
+    @case ('GamePlay') {
+      <app-game-play [difficulty]="currentDifficulty" />
+    }
+    @case ('MainMenu') {
+      <app-game-over />
+    }
+  }
+</ion-content>

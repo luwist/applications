@@ -1,0 +1,50 @@
+// .ion-padding {
+//     --padding-start: 32px;
+//     --padding-end: 32px;
+//   }
+// ion-content {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 100%;
+  
+//     &.ion-padding {
+//       --padding-start: 32px;
+//       --padding-end: 32px;
+//     }
+//   }
+
+
+.wrapper {
+    img {
+        background-color: #353535;
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    &:before {
+        border-radius: 5px;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    
+    .body {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: hsla(0, 0%, 0%, 0.5);
+        backdrop-filter: blur(4px);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -6,30 +6,29 @@
 
 <ion-content class="ion-padding">
   @if (photos.length > 0) {
-    <div class="gallery">
-      @for (photo of photos; track $index) {
-        <app-photo-card
-          [image]="photo.image"
-          [firstName]="photo.firstName"
-          [lastName]="photo.lastName"
-          (imageClick)="openModal($event)"
-        />
-      }
-    </div>
+  <div class="gallery">
+    @for (photo of photos; track $index) {
+    <app-photo-card
+      [image]="photo.image"
+      [firstName]="photo.firstName"
+      [lastName]="photo.lastName"
+      (imageClick)="openModal($event)"
+    />
+    }
+  </div>
   } @else {
-    <div class="content-empty">
-      <div class="body">
-        <img src="assets/images/photo-empty.png" alt="">
-  
-        <span>No hay fotos para mostrar</span>
-      </div>
+  <div class="content-empty">
+    <div class="body">
+      <img src="assets/images/photo-empty.png" alt="" />
+
+      <span>No hay fotos para mostrar</span>
     </div>
+  </div>
   }
 
   <ion-modal id="photo-modal" #photoModal trigger="open-photo-modal">
     <ng-template>
-        <app-photo-detail [image]="currentImage" />
+      <app-photo-detail [image]="currentImage" />
     </ng-template>
   </ion-modal>
-
 </ion-content>
